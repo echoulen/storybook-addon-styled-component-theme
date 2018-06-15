@@ -9,37 +9,58 @@ export interface ThemeProps {
 }
 
 interface ThemeState {
+    theme: Theme;
+    setTheme: (theme: Theme) => void;
     themes: List<Theme>;
     setThemes: (themes: List<Theme>) => void;
 }
 
 interface ThemeHandler {
     onSelectTheme: (theme: Theme) => void;
+    onReceiveThemes: (theme: Theme[]) => void;
 }
 
 type BaseComponentProps = ThemeProps & ThemeState & ThemeHandler;
 
-const BaseComponent: React.SFC<BaseComponentProps> = ({onSelectTheme, themes}) => (
+const BaseComponent: React.SFC<BaseComponentProps> = ({onSelectTheme, themes, theme}) => (
     <div style={RowStyle}>
-        {themes.map((theme, i) => <div style={ButtonStyle} key={i} onClick={() => onSelectTheme(theme)}>{theme.name}</div>).toArray()}
+        {themes.map((th, i) => {
+            const buttonStyle = th === theme ? SelectedButtonStyle : ButtonStyle;
+            return <div style={buttonStyle} key={i} onClick={() => onSelectTheme(th)}>{th.name}</div>;
+        }).toArray()}
     </div>
 );
 
 export const Themes = compose<BaseComponentProps, ThemeProps>(
+    withState("theme", "setTheme", null),
     withState("themes", "setThemes", List()),
     withHandlers<ThemeProps & ThemeState, ThemeHandler>({
-        onSelectTheme: ({channel}) => (theme) => {
+        onSelectTheme: ({channel, setTheme}) => (theme) => {
+            setTheme(theme);
             channel.emit("selectTheme", theme);
+        },
+        onReceiveThemes: ({setTheme, setThemes, channel}) => (newThemes: Theme[]) => {
+            const themes = List(newThemes);
+            setThemes(List(themes));
+            if (themes.count() > 0) {
+                const theme = themes.first();
+                setTheme(theme);
+                channel.emit("selectTheme", theme);
+            }
         },
     }),
     lifecycle<BaseComponentProps, BaseComponentProps>({
         componentDidMount() {
-            const {channel, setThemes} = this.props;
-            channel.on("setThemes", (themes) => setThemes(List(themes)));
+            const {channel, onReceiveThemes} = this.props;
+            channel.on("setThemes", onReceiveThemes);
+        },
+        componentWillUnmount() {
+            const {channel, onReceiveThemes} = this.props;
+            channel.removeListener("setThemes", onReceiveThemes);
         },
     }),
     branch<BaseComponentProps>(
-        ({themes}) => !themes,
+        ({theme}) => !theme,
         renderNothing,
     ),
 )(BaseComponent);
@@ -52,8 +73,16 @@ const RowStyle: React.CSSProperties = {
 
 const ButtonStyle: React.CSSProperties = {
     border: "1px solid #BBB",
-    borderRadius: "3px",
+    borderRadius: "6px",
     color: "#BBB",
     padding: "15px 10px",
     marginRight: "15px",
+    cursor: "pointer",
+};
+
+const SelectedButtonStyle: React.CSSProperties = {
+    ...ButtonStyle,
+    borderColor: "#666",
+    color: "#666",
+    fontWeight: "bold",
 };
