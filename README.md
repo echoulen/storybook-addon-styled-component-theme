@@ -1,3 +1,8 @@
+#### Installation
+```bash
+yarn add storybook-addon-styled-component-theme --dev
+```
+
 #### 1. Add to .storybook/addons.js 
 
 ```javascript
