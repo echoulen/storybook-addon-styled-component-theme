@@ -1,5 +1,9 @@
 [![npm version](https://badge.fury.io/js/storybook-addon-styled-component-theme.svg)](https://badge.fury.io/js/storybook-addon-styled-component-theme)
 
+
+![](https://media.giphy.com/media/FfFvOA9C0h9bhfCuNX/giphy.gif)
+
+
 #### Installation
 ```bash
 yarn add storybook-addon-styled-component-theme --dev
@@ -21,3 +25,6 @@ storiesOf("demo.theme", module).add("Demo", () => (
     </ThemesProvider>
 ));
 ```
+
+#### Remind
+Make sure every theme with `name` property
