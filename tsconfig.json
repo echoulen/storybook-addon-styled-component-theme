@@ -6,11 +6,12 @@
         "noImplicitAny": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "declaration": false,
+        "declaration": true,
         "lib": ["es5", "es6", "dom"],
         "jsx": "react",
         "types": ["node"],
         "sourceRoot": "src",
+        "declarationDir": "dist",
         "outDir": "dist"
     },
     "exclude": [

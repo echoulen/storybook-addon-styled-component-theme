@@ -1,8 +1,9 @@
 {
   "name": "storybook-addon-styled-component-theme",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "storybook addon",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && tsc -p .",
