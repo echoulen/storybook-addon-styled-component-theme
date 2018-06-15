@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/storybook-addon-styled-component-theme.svg)](https://badge.fury.io/js/storybook-addon-styled-component-theme)
+
 #### Installation
 ```bash
 yarn add storybook-addon-styled-component-theme --dev
