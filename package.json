@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-styled-component-theme",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "storybook addon with styled-components theme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
