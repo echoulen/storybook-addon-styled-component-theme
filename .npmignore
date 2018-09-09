@@ -3,3 +3,5 @@ node_modules
 .gitignore
 tsconfig.json
 yarn.lock
+.idea
+example
