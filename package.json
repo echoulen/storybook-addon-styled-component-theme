@@ -7,7 +7,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && tsc -p .",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "npm run build"
   },
   "author": "carlos",
   "license": "MIT",
