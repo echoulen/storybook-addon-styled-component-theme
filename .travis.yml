@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - 9
+script:
+  - npm test
+cache:
+  directories:
+    - "node_modules"
+deploy:
+  provider: npm
+  email: echoulen@gmail.com
+  api_key: $NPM_TOKEN
+  on:
+    tags: true
+  skip_cleanup: true
