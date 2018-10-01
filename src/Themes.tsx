@@ -6,6 +6,7 @@ import {Theme} from "./types/Theme";
 export interface ThemeProps {
     channel: any;
     api: any;
+    active: Boolean;
 }
 
 interface ThemeState {
@@ -22,13 +23,15 @@ interface ThemeHandler {
 
 type BaseComponentProps = ThemeProps & ThemeState & ThemeHandler;
 
-const BaseComponent: React.SFC<BaseComponentProps> = ({onSelectTheme, themes, theme}) => (
+const BaseComponent: React.SFC<BaseComponentProps> = ({onSelectTheme, themes, theme, active}) => (
+    active ? (
     <div style={RowStyle}>
         {themes.map((th, i) => {
             const buttonStyle = th === theme ? SelectedButtonStyle : ButtonStyle;
             return <div style={buttonStyle} key={i} onClick={() => onSelectTheme(th)}>{th.name}</div>;
         }).toArray()}
-    </div>
+    </div> )
+    : (<div />)
 );
 
 export const Themes = compose<BaseComponentProps, ThemeProps>(
