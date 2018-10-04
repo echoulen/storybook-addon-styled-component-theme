@@ -1,6 +1,6 @@
 import {List} from "immutable";
 import * as React from "react";
-import {makeDecorator} from '@storybook/addons';
+import {makeDecorator} from "@storybook/addons";
 import {ThemesProvider} from "./ThemesProvider";
 import {Theme} from "./types/Theme";
 
