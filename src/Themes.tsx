@@ -75,9 +75,12 @@ const ButtonStyle: React.CSSProperties = {
     border: "1px solid #BBB",
     borderRadius: "6px",
     color: "#BBB",
-    padding: "15px 10px",
+    padding: "13px",
     marginRight: "15px",
     cursor: "pointer",
+    // tslint:disable-next-line:max-line-length
+    fontFamily: "-apple-system, \".SFNSText-Regular\", \"San Francisco\", BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", \"Lucida Grande\", \"Arial\", sans-serif",
+    lineHeight: 1,
 };
 
 const SelectedButtonStyle: React.CSSProperties = {
