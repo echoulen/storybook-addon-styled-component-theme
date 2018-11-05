@@ -4,16 +4,22 @@
 
 ![](https://media.giphy.com/media/FfFvOA9C0h9bhfCuNX/giphy.gif)
 
+#### Notice
+After v1.1.0 required storybook 4+
+
 
 #### Installation
 ```bash
 yarn add storybook-addon-styled-component-theme --dev
 ```
 
+
 #### Add to .storybook/addons.js 
 
 ```javascript
-import 'storybook-addon-styled-component-theme/dist/register';
+import 'storybook-addon-styled-component-theme/dist/src/register'; // v1.1.0^
+
+import 'storybook-addon-styled-component-theme/dist/register'; // v1.0.7
 ```
 
 #### addDecorator to .storybook/config.js
@@ -41,3 +47,13 @@ storiesOf("demo", module)
 
 #### Remind
 Make sure every theme with `name` property
+
+
+#### Contributing
+
+`yarn`
+
+`yarn build`
+
+`yarn example`
+
