@@ -6,6 +6,7 @@ import {Theme} from "./types/Theme";
 export interface ThemeProps {
     channel: any;
     api: any;
+    active: boolean;
 }
 
 interface ThemeState {
@@ -60,7 +61,7 @@ export const Themes = compose<BaseComponentProps, ThemeProps>(
         },
     }),
     branch<BaseComponentProps>(
-        ({theme}) => !theme,
+        ({theme, active}) => !theme || !active,
         renderNothing,
     ),
 )(BaseComponent);

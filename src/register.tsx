@@ -6,6 +6,8 @@ addons.register("storybook/themes", (api) => {
     // Also need to set a unique name to the panel.
     addons.addPanel("storybook/themes/panel", {
         title: "Themes",
-        render: () => (<Themes channel={addons.getChannel()} api={api} />),
+        render: ({active}) => {
+            return (<Themes channel={addons.getChannel()} api={api} active={active} />);
+        },
     });
 });

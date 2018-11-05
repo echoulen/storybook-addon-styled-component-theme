@@ -3,3 +3,4 @@ dist
 .idea
 coverage
 yarn-error.log
+.cache

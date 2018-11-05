@@ -1,7 +1,13 @@
-src
+/src
+__tests__
 node_modules
 .gitignore
 tsconfig.json
 yarn.lock
 .idea
 example
+.cache
+.storybook
+.travis.yml
+jest.config.js
+tslint.json

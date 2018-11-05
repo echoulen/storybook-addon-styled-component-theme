@@ -11,7 +11,7 @@ describe("Themes spec", () => {
             removeListener: stub(),
         };
 
-        const component = mount(<Themes api={null} channel={channel} />);
+        const component = mount(<Themes api={null} channel={channel} active={true} />);
         expect(component.render()).toMatchSnapshot();
         expect(channel.on.calledOnce).toBeTruthy();
         expect(channel.emit.notCalled).toBeTruthy();
