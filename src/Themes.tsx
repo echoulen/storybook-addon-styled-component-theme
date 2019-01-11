@@ -36,15 +36,17 @@ export const Themes = compose<BaseComponentProps, ThemeProps>(
     withState("theme", "setTheme", null),
     withState("themes", "setThemes", List()),
     withHandlers<ThemeProps & ThemeState, ThemeHandler>({
-        onSelectTheme: ({channel, setTheme}) => (theme) => {
+        onSelectTheme: ({channel, setTheme, api}) => (theme) => {
             setTheme(theme);
+            api.setQueryParams({theme: theme.name});
             channel.emit("selectTheme", theme);
         },
-        onReceiveThemes: ({setTheme, setThemes, channel}) => (newThemes: Theme[]) => {
+        onReceiveThemes: ({setTheme, setThemes, channel, api}) => (newThemes: Theme[]) => {
             const themes = List(newThemes);
+            const themeName = api.getQueryParam("theme");
             setThemes(List(themes));
             if (themes.count() > 0) {
-                const theme = themes.first();
+                const theme = themes.find((t) => t.name === themeName) || themes.first();
                 setTheme(theme);
                 channel.emit("selectTheme", theme);
             }
