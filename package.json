@@ -5,7 +5,7 @@
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "example": "start-storybook -p 6006",
+    "serve": "start-storybook -p 6006",
     "clean": "rimraf dist",
     "build": "npm run clean && tsc -p .",
     "pretest": "tslint -p .",
@@ -44,9 +44,10 @@
     "typescript": "^2.9.2"
   },
   "peerDependencies": {
-    "@storybook/addons": "^3.4.8",
-    "react": "^16.3.0",
-    "styled-components": "^3.3.2"
+    "@storybook/addons": "^4.0.0",
+    "@storybook/react": "^4.0.0",
+    "react": "^16.0.0",
+    "styled-components": "^3.0.1"
   },
   "keywords": [
     "storybook",
