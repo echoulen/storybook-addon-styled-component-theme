@@ -5,7 +5,7 @@
 ![](https://media.giphy.com/media/FfFvOA9C0h9bhfCuNX/giphy.gif)
 
 #### Notice
-After v1.1.0 required storybook 4+
+v1.1.0 required storybook 4+
 
 
 #### Installation
@@ -55,5 +55,4 @@ Make sure every theme with `name` property
 
 `yarn build`
 
-`yarn example`
-
+`yarn serve`
