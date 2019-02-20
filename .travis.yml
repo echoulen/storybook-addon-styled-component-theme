@@ -1,11 +1,16 @@
 language: node_js
 node_js:
   - 9
+install:
+  - yarn install
+  - yarn global add codecov
 script:
-  - npm test
+  - yarn test
 cache:
   directories:
     - "node_modules"
+after_success:
+  - codecov
 deploy:
   provider: npm
   email: echoulen@gmail.com
