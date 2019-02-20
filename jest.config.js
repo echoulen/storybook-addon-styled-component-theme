@@ -12,7 +12,6 @@ module.exports = {
   setupFiles: ["./src/__tests__/setup/setupTests.ts"],
   snapshotSerializers: ["enzyme-to-json/serializer"],
   moduleFileExtensions: ["js", "jsx", "json", "ts", "tsx"],
-  coverageReporters: ["text", "json", "lcov"],
   coverageDirectory: "./coverage",
   collectCoverage: true,
   coveragePathIgnorePatterns: ["^.+\\.d\\.ts$"],
