@@ -1,13 +1,13 @@
 # Change Log
 
-## [Unreleased](https://github.com/echoulen/storybook-addon-styled-component-theme/tree/HEAD)
-
-[Full Changelog](https://github.com/echoulen/storybook-addon-styled-component-theme/compare/v1.1.1...HEAD)
+## [v1.2.0](https://github.com/echoulen/storybook-addon-styled-component-theme/tree/v1.2.0) (2019-04-07)
+[Full Changelog](https://github.com/echoulen/storybook-addon-styled-component-theme/compare/v1.1.1...v1.2.0)
 
 **Closed issues:**
 
 - This addon removes function from the theme object [\#17](https://github.com/echoulen/storybook-addon-styled-component-theme/issues/17)
 - Storybook v5 button display issue [\#15](https://github.com/echoulen/storybook-addon-styled-component-theme/issues/15)
+- The absense of CHANGELOG.md [\#12](https://github.com/echoulen/storybook-addon-styled-component-theme/issues/12)
 
 ## [v1.1.1](https://github.com/echoulen/storybook-addon-styled-component-theme/tree/v1.1.1) (2019-01-11)
 [Full Changelog](https://github.com/echoulen/storybook-addon-styled-component-theme/compare/v1.1.0...v1.1.1)
