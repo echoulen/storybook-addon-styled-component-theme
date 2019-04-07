@@ -69,9 +69,8 @@ export const Themes = compose<BaseComponentProps, ThemeProps>(
 )(BaseComponent);
 
 const RowStyle: React.CSSProperties = {
+    margin: "10px",
     display: "flex",
-    height: "45px",
-    padding: "15px",
 };
 
 const ButtonStyle: React.CSSProperties = {
@@ -83,12 +82,12 @@ const ButtonStyle: React.CSSProperties = {
     cursor: "pointer",
     // tslint:disable-next-line:max-line-length
     fontFamily: "-apple-system, \".SFNSText-Regular\", \"San Francisco\", BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", \"Lucida Grande\", \"Arial\", sans-serif",
-    lineHeight: 1,
+    lineHeight: "25px",
 };
 
 const SelectedButtonStyle: React.CSSProperties = {
     ...ButtonStyle,
-    borderColor: "#666",
-    color: "#666",
+    backgroundColor: "#BBB",
+    color: "#333",
     fontWeight: "bold",
 };

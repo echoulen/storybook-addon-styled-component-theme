@@ -1,1 +1,1 @@
-import "../src/register";
+import "../dist/src/register";

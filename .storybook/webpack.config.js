@@ -1,9 +1,9 @@
-module.exports = function(baseConfig, env, config) {
+module.exports = function({config}) {
     config.module.rules.push({
-        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         loader: "awesome-typescript-loader",
+        test: /\.(ts|tsx)$/,
     });
-    config.resolve.extensions.push('.ts', '.tsx');
+    config.resolve.extensions.push(".ts", ".tsx");
     return config;
 };

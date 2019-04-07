@@ -5,7 +5,7 @@
 ![](https://media.giphy.com/media/FfFvOA9C0h9bhfCuNX/giphy.gif)
 
 #### Notice
-v1.1.0 required storybook 4+
+Only support storybook 4 and newer
 
 
 #### Installation
@@ -53,6 +53,6 @@ Make sure every theme with `name` property
 
 `yarn`
 
-`yarn build`
+`yarn build:watch`
 
 `yarn serve`
