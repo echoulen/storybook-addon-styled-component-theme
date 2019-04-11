@@ -8,12 +8,17 @@
         "experimentalDecorators": true,
         "skipLibCheck": true,
         "declaration": true,
-        "lib": ["es5", "es6", "dom"],
+        "lib": [
+            "es5",
+            "es6",
+            "dom"
+        ],
         "jsx": "react",
-        "types": ["node"],
+        "types": [
+            "node"
+        ],
         "sourceRoot": "src",
         "declarationDir": "dist",
-        "noEmit": true,
         "outDir": "dist"
     },
     "exclude": [
