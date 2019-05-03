@@ -1,7 +1,7 @@
 import addons from "@storybook/addons";
 import {List} from "immutable";
 import * as React from "react";
-import {branch, compose, lifecycle, renderNothing, withState} from "recompose";
+import {branch, compose, lifecycle, renderNothing, withHandlers, withState} from "recompose";
 import {ThemeProvider} from "styled-components";
 import {Theme} from "./types/Theme";
 
@@ -15,6 +15,7 @@ interface ThemesProviderState {
 }
 
 interface ThemesProviderHandler {
+    onSelectTheme: (name: string) => void;
 }
 
 type BaseComponentProps = ThemesProviderProps & ThemesProviderState & ThemesProviderHandler;
@@ -27,17 +28,25 @@ const BaseComponent: React.SFC<BaseComponentProps> = ({theme, children}) => (
 
 export const ThemesProvider = compose<BaseComponentProps, ThemesProviderProps>(
     withState("theme", "setTheme", null),
+    withHandlers<ThemesProviderProps & ThemesProviderState, ThemesProviderHandler>({
+        onSelectTheme: ({setTheme, themes}) => (name) => {
+            // Don't send the `theme` directly through the channel because its functions won't be
+            // properly serialized. Instead the `name` is sent and it is used to get the right theme.
+            const theme = themes.find((th: Theme) => th.name === name);
+            setTheme(theme);
+        },
+    }),
     lifecycle<BaseComponentProps, BaseComponentProps>({
         componentDidMount() {
-            const {setTheme, themes} = this.props;
+            const {onSelectTheme, themes} = this.props;
             const channel = addons.getChannel();
-            channel.on("selectTheme", setTheme);
+            channel.on("selectTheme", onSelectTheme);
             channel.emit("setThemes", themes);
         },
         componentWillUnmount() {
-            const {setTheme} = this.props;
+            const {onSelectTheme} = this.props;
             const channel = addons.getChannel();
-            channel.removeListener("selectTheme", setTheme);
+            channel.removeListener("selectTheme", onSelectTheme);
         },
     }),
     branch<BaseComponentProps>(
