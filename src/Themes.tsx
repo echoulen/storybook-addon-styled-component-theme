@@ -39,7 +39,7 @@ export const Themes = compose<BaseComponentProps, ThemeProps>(
         onSelectTheme: ({channel, setTheme, api}) => (theme) => {
             setTheme(theme);
             api.setQueryParams({theme: theme.name});
-            channel.emit("selectTheme", theme);
+            channel.emit("selectTheme", theme.name);
         },
         onReceiveThemes: ({setTheme, setThemes, channel, api}) => (newThemes: Theme[]) => {
             const themes = List(newThemes);
@@ -48,7 +48,7 @@ export const Themes = compose<BaseComponentProps, ThemeProps>(
             if (themes.count() > 0) {
                 const theme = themes.find((t) => t.name === themeName) || themes.first();
                 setTheme(theme);
-                channel.emit("selectTheme", theme);
+                channel.emit("selectTheme", theme.name);
             }
         },
     }),
