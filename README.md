@@ -46,7 +46,7 @@ storiesOf("demo", module)
 ```
 
 #### Remind
-Make sure every theme with `name` property
+Make sure every theme object has a `name` property
 
 
 #### Contributing
