@@ -69,8 +69,11 @@ export const Themes = compose<BaseComponentProps, ThemeProps>(
 )(BaseComponent);
 
 const RowStyle: React.CSSProperties = {
-    margin: "10px",
+    padding: "10px",
     display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    boxSizing: "border-box"
 };
 
 const ButtonStyle: React.CSSProperties = {
