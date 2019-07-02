@@ -73,7 +73,7 @@ const RowStyle: React.CSSProperties = {
     display: "flex",
     flexDirection: "row",
     alignItems: "flex-start",
-    boxSizing: "border-box"
+    boxSizing: "border-box",
 };
 
 const ButtonStyle: React.CSSProperties = {
