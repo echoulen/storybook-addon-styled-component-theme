@@ -63,7 +63,7 @@ export const Themes = compose<BaseComponentProps, ThemeProps>(
         },
     }),
     branch<BaseComponentProps>(
-        ({theme, active}) => !theme || !active,
+        ({active}) => !active,
         renderNothing,
     ),
 )(BaseComponent);
