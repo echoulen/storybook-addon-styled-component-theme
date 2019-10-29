@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@storybook/addons": "^5.0.0",
+    "@storybook/client-api": "^5.0.0",
     "@storybook/react": "^5.0.0",
     "@types/enzyme": "^3.1.13",
     "@types/jest": "^23.3.2",
@@ -47,6 +48,7 @@
   },
   "peerDependencies": {
     "@storybook/addons": "^5.0.0",
+    "@storybook/client-api": "^5.0.0",
     "@storybook/react": "^5.0.0",
     "react": "^16.0.0",
     "styled-components": "^4.0.0"
