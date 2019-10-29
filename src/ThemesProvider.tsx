@@ -3,7 +3,10 @@ import {List} from "immutable";
 import * as React from "react";
 import {branch, compose, lifecycle, mapProps, renderNothing, withHandlers, withState} from "recompose";
 import {ThemeProvider, ThemeProviderComponent} from "styled-components";
+import {getQueryParam} from "@storybook/client-api";
 import {Theme} from "./types/Theme";
+
+const currentThemeValueFromUrl = getQueryParam("theme");
 
 export interface ThemesProviderProps {
     themes: List<Theme>;
@@ -48,6 +51,11 @@ export const ThemesProvider = compose<BaseComponentProps, ThemesProviderProps>(
             const channel = addons.getChannel();
             channel.on("selectTheme", onSelectTheme);
             channel.emit("setThemes", themes);
+
+            // Initialize the theme with the URL query param when in the ejected iframe view.
+            if (currentThemeValueFromUrl) {
+                onSelectTheme(currentThemeValueFromUrl);
+            }
         },
         componentWillUnmount() {
             const {onSelectTheme} = this.props;
