@@ -100,4 +100,5 @@ const Button = styled.div`
     line-height: 25px;
     font-weight: ${(props: ButtonProps) => props.selected ? "bold" : "normal"};
     background-color: ${(props: ButtonProps) => props.selected ? "#333" : "None"};
+    white-space: nowrap;
 `;
