@@ -52,9 +52,26 @@ Make sure every theme object has a `name` property
 
 #### Contributing
 
-`yarn`
+##### Publish local library
+```shell
+yarn link
 
-`yarn build`
+yarn
+
+yarn build
+```
+
+##### Go to example folder and subscribe local library
+
+```shell
+cd example
+
+yarn link storybook-addon-styled-component-theme
+
+yarn
+
+yarn storybook
+```
 
 #### Run all the spec
 
