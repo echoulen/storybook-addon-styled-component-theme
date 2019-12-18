@@ -5,8 +5,7 @@
 ![](https://media.giphy.com/media/FfFvOA9C0h9bhfCuNX/giphy.gif)
 
 #### Notice
-Only support storybook 4 and newer
-
+Support storybook v4, v5 and newer
 
 #### Installation
 ```bash
@@ -14,15 +13,17 @@ yarn add storybook-addon-styled-component-theme --dev
 ```
 
 
-#### Add to .storybook/addons.js 
+#### Add to .storybook/addons.ts
 
 ```javascript
-import 'storybook-addon-styled-component-theme/dist/src/register'; // v1.1.0^
+// v1.3, storybook v5.2
+import 'storybook-addon-styled-component-theme/dist/register';
 
-import 'storybook-addon-styled-component-theme/dist/register'; // v1.0.7
+// v1.2, storybook v4, v5.0
+import 'storybook-addon-styled-component-theme/dist/src/register';
 ```
 
-#### addDecorator to .storybook/config.js
+#### addDecorator to .storybook/config.ts
 ```javascript
 import {addDecorator} from '@storybook/react';
 import {withThemesProvider} from 'storybook-addon-styled-component-theme';
@@ -53,6 +54,8 @@ Make sure every theme object has a `name` property
 
 `yarn`
 
-`yarn build:watch`
+`yarn build`
 
-`yarn serve`
+#### Run all the spec
+
+`yarn test`
