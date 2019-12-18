@@ -1,6 +1,7 @@
 import {List} from "immutable";
 import * as React from "react";
 import {branch, compose, lifecycle, renderNothing, withHandlers, withState} from "recompose";
+import styled from "styled-components";
 import {Theme} from "./types/Theme";
 
 export interface ThemeProps {
@@ -24,29 +25,28 @@ interface ThemeHandler {
 type BaseComponentProps = ThemeProps & ThemeState & ThemeHandler;
 
 const BaseComponent: React.SFC<BaseComponentProps> = ({onSelectTheme, themes, theme}) => (
-    <div style={RowStyle}>
+    <FlexRow>
         {themes.map((th, i) => {
-            const buttonStyle = th === theme ? SelectedButtonStyle : ButtonStyle;
-            return <div style={buttonStyle} key={i} onClick={() => onSelectTheme(th)}>{th.name}</div>;
+            return <Button selected={th === theme} key={i} onClick={() => onSelectTheme(th)}>{th.name}</Button>;
         }).toArray()}
-    </div>
+        <FillingDiv />
+        <Border>|</Border>
+    </FlexRow>
 );
 
 export const Themes = compose<BaseComponentProps, ThemeProps>(
     withState("theme", "setTheme", null),
     withState("themes", "setThemes", List()),
     withHandlers<ThemeProps & ThemeState, ThemeHandler>({
-        onSelectTheme: ({channel, setTheme, api}) => (theme) => {
+        onSelectTheme: ({channel, setTheme}) => (theme) => {
             setTheme(theme);
-            api.setQueryParams({theme: theme.name});
             channel.emit("selectTheme", theme.name);
         },
-        onReceiveThemes: ({setTheme, setThemes, channel, api}) => (newThemes: Theme[]) => {
+        onReceiveThemes: ({setTheme, setThemes, channel}) => (newThemes: Theme[]) => {
             const themes = List(newThemes);
-            const themeName = api.getQueryParam("theme");
             setThemes(List(themes));
             if (themes.count() > 0) {
-                const theme = themes.find((t) => t.name === themeName) || themes.first();
+                const theme = themes.first();
                 setTheme(theme);
                 channel.emit("selectTheme", theme.name);
             }
@@ -68,30 +68,36 @@ export const Themes = compose<BaseComponentProps, ThemeProps>(
     ),
 )(BaseComponent);
 
-const RowStyle: React.CSSProperties = {
-    padding: "10px",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "flex-start",
-    boxSizing: "border-box",
-};
+const FlexRow = styled.div`
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+`;
 
-const ButtonStyle: React.CSSProperties = {
-    border: "1px solid #BBB",
-    borderRadius: "6px",
-    color: "#BBB",
-    padding: "13px",
-    marginRight: "15px",
-    height: "55px",
-    cursor: "pointer",
-    // tslint:disable-next-line:max-line-length
-    fontFamily: "-apple-system, \".SFNSText-Regular\", \"San Francisco\", BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", \"Lucida Grande\", \"Arial\", sans-serif",
-    lineHeight: "25px",
-};
+const FillingDiv = styled.div`
+    flex: 1;
+`;
 
-const SelectedButtonStyle: React.CSSProperties = {
-    ...ButtonStyle,
-    backgroundColor: "#BBB",
-    color: "#333",
-    fontWeight: "bold",
-};
+// fix the selection not disappear at first time
+const Border = styled.div`
+    font-size: 0;
+`;
+
+interface ButtonProps {
+    selected: boolean;
+}
+
+const Button = styled.div`
+    border: 1px solid #BBB;
+    border-radius: 6px;
+    color: ${(props: ButtonProps) => props.selected ? "white" : "#BBB"};
+    padding: 13px;
+    margin-right: 15px;
+    height: 55px;
+    cursor: pointer;
+    font-family: -apple-system, .SFNSText-Regular, San Francisco, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+                Droid Sans, Helvetica Neue, Lucida Grande, Arial, sans-serif;
+    line-height: 25px;
+    font-weight: ${(props: ButtonProps) => props.selected ? "bold" : "normal"};
+    background-color: ${(props: ButtonProps) => props.selected ? "#333" : "None"};
+`;

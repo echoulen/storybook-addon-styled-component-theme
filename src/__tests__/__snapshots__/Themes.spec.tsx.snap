@@ -2,6 +2,15 @@
 
 exports[`Themes spec should render proper 1`] = `
 <div
-  style="padding: 10px; display: flex; flex-direction: row; align-items: flex-start; box-sizing: border-box;"
-/>
+  class="sc-bdVaJa fAEWqR"
+>
+  <div
+    class="sc-bwzfXH bHQwkq"
+  />
+  <div
+    class="sc-htpNat idcnyQ"
+  >
+    |
+  </div>
+</div>
 `;
