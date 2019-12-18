@@ -14,6 +14,8 @@
   },
   "author": "carlos",
   "license": "MIT",
+  "repository": "echoulen/storybook-addon-styled-component-theme",
+  "bugs": "https://github.com/echoulen/storybook-addon-styled-component-theme/issues",
   "dependencies": {
     "immutable": "^3.8.2",
     "recompose": "^0.27.1"
