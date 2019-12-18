@@ -26,9 +26,15 @@ type BaseComponentProps = ThemeProps & ThemeState & ThemeHandler;
 
 const BaseComponent: React.SFC<BaseComponentProps> = ({onSelectTheme, themes, theme}) => (
     <FlexRow>
-        {themes.map((th, i) => {
-            return <Button selected={th === theme} key={i} onClick={() => onSelectTheme(th)}>{th.name}</Button>;
-        }).toArray()}
+        {themes.map((th, i) => (
+            <Button
+                id={`theme-selection-button-${th.name}`}
+                selected={th === theme}
+                key={i}
+                onClick={() => onSelectTheme(th)}>
+                {th.name}
+            </Button>
+        )).toArray()}
         <FillingDiv />
         <Border>|</Border>
     </FlexRow>
