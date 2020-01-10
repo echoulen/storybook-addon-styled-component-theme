@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "storybook": "start-storybook"
+    "storybook": "start-storybook -p 6006"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +13,6 @@
     "@storybook/addons": "^5.2.8",
     "@storybook/react": "^5.2.8",
     "babel-loader": "^8.0.6",
-    "storybook-addon-styled-component-theme": "^1.2.5"
+    "storybook-addon-styled-component-theme": "link:../"
   }
 }
