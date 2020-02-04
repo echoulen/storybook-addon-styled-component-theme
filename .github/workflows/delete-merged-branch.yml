@@ -1,0 +1,14 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: SvanBoxel/delete-merged-branch@v1.3.3
+    - name: Delete merged branch
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
