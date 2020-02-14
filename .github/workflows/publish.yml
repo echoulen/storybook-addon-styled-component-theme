@@ -1,0 +1,30 @@
+name: Publish to NPM
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set env
+        run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF:10}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Publish
+        run: |
+          yarn
+          yarn publish --new-version ${RELEASE_VERSION/v}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
