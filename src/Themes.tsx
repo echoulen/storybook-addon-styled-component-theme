@@ -25,19 +25,21 @@ interface ThemeHandler {
 type BaseComponentProps = ThemeProps & ThemeState & ThemeHandler;
 
 const BaseComponent: React.SFC<BaseComponentProps> = ({onSelectTheme, themes, theme}) => (
-    <FlexRow>
-        {themes.map((th, i) => (
-            <Button
-                id={`theme-selection-button-${th.name}`}
-                selected={th === theme}
-                key={i}
-                onClick={() => onSelectTheme(th)}>
-                {th.name}
-            </Button>
-        )).toArray()}
-        <FillingDiv />
-        <Border>|</Border>
-    </FlexRow>
+    <div>
+        <ButtonContainer>
+            {themes.map((th, i) => (
+                <Button
+                    id={`theme-selection-button-${th.name}`}
+                    selected={th === theme}
+                    themeColor={th.addonOptions?.themeColor}
+                    key={i}
+                    onClick={() => onSelectTheme(th)}
+                >
+                    {th.name}
+                </Button>
+            )).toArray()}
+        </ButtonContainer>
+    </div>
 );
 
 export const Themes = compose<BaseComponentProps, ThemeProps>(
@@ -74,37 +76,46 @@ export const Themes = compose<BaseComponentProps, ThemeProps>(
     ),
 )(BaseComponent);
 
-const FlexRow = styled.div`
+const ButtonContainer = styled.div`
     display: flex;
-    padding: 10px;
-    box-sizing: border-box;
-`;
-
-const FillingDiv = styled.div`
-    flex: 1;
-`;
-
-// fix the selection not disappear at first time
-const Border = styled.div`
-    font-size: 0;
+    flex-wrap: wrap;
+    margin: 8px 0 0 8px;
 `;
 
 interface ButtonProps {
     selected: boolean;
+    themeColor?: string;
 }
 
-const Button = styled.div`
-    border: 1px solid #BBB;
-    border-radius: 6px;
-    color: ${(props: ButtonProps) => props.selected ? "white" : "#BBB"};
-    padding: 13px;
-    margin-right: 15px;
-    height: 55px;
+const Button = styled.button<ButtonProps>`
+    display: flex;
+    align-items: center;
+    border: none;
+    margin: 0 0;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 0;
+    padding-right: 8px;
+    padding-left: ${props => props.themeColor ? 0 : "8px"};
+    width: auto;
+    overflow: visible;
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid ${props => props.selected ? "#bbb" : "#ddd"};
+    color: ${props => props.selected ? "#111" : "#444"};
+    background-color: ${props => props.selected ? "#ccc" : "#eee"};
     cursor: pointer;
-    font-family: -apple-system, .SFNSText-Regular, San Francisco, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    font-family: -apple-system, SFNSText-Regular, San Francisco, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
                 Droid Sans, Helvetica Neue, Lucida Grande, Arial, sans-serif;
-    line-height: 25px;
-    font-weight: ${(props: ButtonProps) => props.selected ? "bold" : "normal"};
-    background-color: ${(props: ButtonProps) => props.selected ? "#333" : "None"};
-    white-space: nowrap;
+    font-weight: 600;
+
+    :before {
+        margin-right: 8px;
+        content: "";
+        display: ${props => props.themeColor ? "block" : "none"};
+        width: 32px;
+        height: 100%;
+        background-color: ${props => props.themeColor};
+        border-radius: 4px 0 0 4px;
+    }
 `;
