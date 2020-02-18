@@ -4,14 +4,34 @@
 
 ![](https://media.giphy.com/media/FfFvOA9C0h9bhfCuNX/giphy.gif)
 
-#### Notice
-Support storybook v4, v5 and newer
+This addon allows storybook to showcase components with multiple different styled-component themes.
+Supports storybook v4, v5 and newer
 
-#### Installation
+## Installation
 ```bash
 yarn add storybook-addon-styled-component-theme --dev
 ```
 
+## Configuration
+Register the addon in .storybook/main.ts
+```javascript 
+module.exports={
+  stories:['../src/**/*.stories.(tsx|mdx)'],
+  addons:['storybook-addon-styled-component-theme/dist/register']
+}
+```
+
+#### Add decorator to stories in .storybook/preview.js
+
+```javascript 
+import {addDecorator} from '@storybook/react';
+import {withThemesProvider} from 'storybook-addon-styled-component-theme';
+
+const themes = [theme1, theme2];
+addDecorator(withThemesProvider(themes));
+```
+
+### Legacy configuration v.5.2 and v.4
 
 #### Add to .storybook/addons.ts
 
@@ -50,7 +70,7 @@ storiesOf("demo", module)
 Make sure every theme object has a `name` property
 
 
-#### Contributing
+## Contributing
 
 ##### Build local library
 ```shell
@@ -71,4 +91,6 @@ yarn storybook
 
 #### Run all the spec
 
-`yarn test`
+```shell
+yarn test
+```
