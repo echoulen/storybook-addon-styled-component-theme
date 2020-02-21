@@ -4,29 +4,53 @@
 
 ![](https://media.giphy.com/media/FfFvOA9C0h9bhfCuNX/giphy.gif)
 
-#### Notice
-Support storybook v4, v5 and newer
+This addon allows storybook to showcase components with multiple different styled-component themes.
+Supports storybook v4, v5 and newer
 
-#### Installation
+## Installation
+
 ```bash
 yarn add storybook-addon-styled-component-theme --dev
 ```
 
+## Configuration
 
-#### Add to .storybook/addons.ts
+Register the addon in .storybook/main.js
+
+```javascript
+module.exports = {
+  stories: ["../src/**/*.stories.(tsx|mdx)"],
+  addons: ["storybook-addon-styled-component-theme/dist/register"]
+};
+```
+
+#### Add decorator to stories in .storybook/preview.js
+
+```javascript
+import { addDecorator } from "@storybook/react";
+import { withThemesProvider } from "storybook-addon-styled-component-theme";
+
+const themes = [theme1, theme2];
+addDecorator(withThemesProvider(themes));
+```
+
+### Legacy configuration v.5.2 and v.4
+
+#### Add to .storybook/addons.js
 
 ```javascript
 // v1.3, storybook v5.2
-import 'storybook-addon-styled-component-theme/dist/register';
+import "storybook-addon-styled-component-theme/dist/register";
 
 // v1.2, storybook v4, v5.0
-import 'storybook-addon-styled-component-theme/dist/src/register';
+import "storybook-addon-styled-component-theme/dist/src/register";
 ```
 
-#### addDecorator to .storybook/config.ts
+#### addDecorator to .storybook/config.js
+
 ```javascript
-import {addDecorator} from '@storybook/react';
-import {withThemesProvider} from 'storybook-addon-styled-component-theme';
+import { addDecorator } from "@storybook/react";
+import { withThemesProvider } from "storybook-addon-styled-component-theme";
 
 const themes = [theme1, theme2];
 addDecorator(withThemesProvider(themes));
@@ -34,10 +58,10 @@ addDecorator(withThemesProvider(themes));
 
 > or
 
-#### addDecorator to stories 
+#### addDecorator to stories
 
 ```javascript
-import {withThemesProvider} from 'storybook-addon-styled-component-theme';
+import { withThemesProvider } from "storybook-addon-styled-component-theme";
 
 const themes = [theme1, theme2];
 
@@ -47,12 +71,13 @@ storiesOf("demo", module)
 ```
 
 #### Remind
+
 Make sure every theme object has a `name` property
 
-
-#### Contributing
+## Contributing
 
 ##### Build local library
+
 ```shell
 yarn
 
@@ -71,4 +96,6 @@ yarn storybook
 
 #### Run all the spec
 
-`yarn test`
+```shell
+yarn test
+```
