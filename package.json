@@ -44,9 +44,9 @@
     "typescript": "^3.7.3"
   },
   "peerDependencies": {
-    "@storybook/addons": "^5.2.0",
-    "@storybook/react": "^5.2.0",
-    "styled-components": "^4.0.0"
+    "@storybook/addons": ">=5.2.0",
+    "@storybook/react": ">=5.2.0",
+    "styled-components": ">=4.0.0"
   },
   "keywords": [
     "storybook",
