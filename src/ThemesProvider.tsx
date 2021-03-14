@@ -25,11 +25,11 @@ interface ThemesProviderHandler {
 
 type BaseComponentProps = ThemesProviderProps & ThemesProviderMapProps & ThemesProviderState & ThemesProviderHandler;
 
-const BaseComponent: React.SFC<BaseComponentProps> = ({theme, Provider, children}) => (
+const BaseComponent: React.FunctionComponent<BaseComponentProps> = ({theme, Provider, children}) => (
   <Provider theme={theme} children={children as any}/>
 );
 
-export const ThemesProvider = compose<BaseComponentProps, ThemesProviderProps>(
+export const ThemesProvider: React.FunctionComponent<ThemesProviderProps> = compose<BaseComponentProps, ThemesProviderProps>(
     mapProps<ThemesProviderProps & ThemesProviderMapProps, ThemesProviderProps>((props) => {
         const {CustomThemeProvider} = props;
         const Provider = CustomThemeProvider ? CustomThemeProvider : ThemeProvider;
@@ -59,4 +59,4 @@ export const ThemesProvider = compose<BaseComponentProps, ThemesProviderProps>(
         (props) => !props.theme,
         renderNothing,
     ),
-)(BaseComponent);
+)(BaseComponent) as any;

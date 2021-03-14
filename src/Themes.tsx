@@ -24,7 +24,7 @@ interface ThemeHandler {
 
 type BaseComponentProps = ThemeProps & ThemeState & ThemeHandler;
 
-const BaseComponent: React.SFC<BaseComponentProps> = ({onSelectTheme, themes, theme}) => (
+const BaseComponent: React.FunctionComponent<BaseComponentProps> = ({onSelectTheme, themes, theme}) => (
     <FlexRow>
         {themes.map((th, i) => (
             <Button
@@ -40,7 +40,7 @@ const BaseComponent: React.SFC<BaseComponentProps> = ({onSelectTheme, themes, th
     </FlexRow>
 );
 
-export const Themes = compose<BaseComponentProps, ThemeProps>(
+export const Themes: React.FunctionComponent<ThemeProps> = compose<BaseComponentProps, ThemeProps>(
     withState("theme", "setTheme", null),
     withState("themes", "setThemes", List()),
     withHandlers<ThemeProps & ThemeState, ThemeHandler>({
@@ -72,7 +72,7 @@ export const Themes = compose<BaseComponentProps, ThemeProps>(
         ({active}) => !active,
         renderNothing,
     ),
-)(BaseComponent);
+)(BaseComponent) as any;
 
 const FlexRow = styled.div`
     display: flex;
