@@ -1,17 +1,13 @@
 import addons from "@storybook/addons";
 import {List} from "immutable";
 import * as React from "react";
-import {branch, compose, lifecycle, mapProps, renderNothing, withHandlers, withState} from "recompose";
-import {ThemeProvider, ThemeProviderComponent} from "styled-components";
+import {branch, compose, lifecycle, renderNothing, withHandlers, withState} from "recompose";
+import {ThemeProviderComponent} from "styled-components";
 import {Theme} from "./types/Theme";
 
 export interface ThemesProviderProps {
     themes: List<Theme>;
-    CustomThemeProvider?: ThemeProviderComponent<any>;
-}
-
-interface ThemesProviderMapProps {
-    Provider: ThemeProviderComponent<{theme: Theme}>;
+    ThemeProvider: ThemeProviderComponent<any>;
 }
 
 interface ThemesProviderState {
@@ -23,20 +19,17 @@ interface ThemesProviderHandler {
     onSelectTheme: (name: string) => void;
 }
 
-type BaseComponentProps = ThemesProviderProps & ThemesProviderMapProps & ThemesProviderState & ThemesProviderHandler;
+type BaseComponentProps = ThemesProviderProps & ThemesProviderState & ThemesProviderHandler;
 
-const BaseComponent: React.FunctionComponent<BaseComponentProps> = ({theme, Provider, children}) => (
-  <Provider theme={theme} children={children as any}/>
-);
+const BaseComponent: React.FunctionComponent<BaseComponentProps> = ({theme, ThemeProvider, children}) => {
+    return (
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    );
+};
 
 export const ThemesProvider: React.FunctionComponent<ThemesProviderProps> = compose<BaseComponentProps, ThemesProviderProps>(
-    mapProps<ThemesProviderProps & ThemesProviderMapProps, ThemesProviderProps>((props) => {
-        const {CustomThemeProvider} = props;
-        const Provider = CustomThemeProvider ? CustomThemeProvider : ThemeProvider;
-        return {...props, Provider};
-    }),
     withState("theme", "setTheme", null),
-    withHandlers<ThemesProviderProps & ThemesProviderMapProps & ThemesProviderState, ThemesProviderHandler>({
+    withHandlers<ThemesProviderProps & ThemesProviderState, ThemesProviderHandler>({
         onSelectTheme: ({setTheme, themes}) => (name) => {
             const theme = themes.find((th: Theme) => th.name === name);
             setTheme(theme);

@@ -5,7 +5,7 @@
 ![](https://media.giphy.com/media/FfFvOA9C0h9bhfCuNX/giphy.gif)
 
 This addon allows storybook to showcase components with multiple different styled-component themes.
-Supports storybook v4, v5 and newer
+Supports storybook v4, v5, v6 and newer
 
 ## Installation
 
@@ -13,28 +13,35 @@ Supports storybook v4, v5 and newer
 yarn add storybook-addon-styled-component-theme --dev
 ```
 
-## Configuration
+# Configuration
 
-Register the addon in .storybook/main.js
+## storybook v6
+
+#### Add a decorator to stories in .storybook/preview.js
 
 ```javascript
+
+import { addDecorator } from "@storybook/react";
+import { withThemesProvider } from "storybook-addon-styled-component-theme";
+import { ThemeProvider } from "styled-components";
+
+const themes = [theme1, theme2];
+addDecorator(withThemesProvider(themes), ThemeProvider);
+```
+
+#### Add to .storybook/main.js
+
+```
 module.exports = {
-  stories: ["../src/**/*.stories.(tsx|mdx)"],
-  addons: ["storybook-addon-styled-component-theme/dist/register"]
+  ...
+  addons: [
+    ...
+    "storybook-addon-styled-component-theme/dist/preset"
+  ]
 };
 ```
 
-#### Add decorator to stories in .storybook/preview.js
-
-```javascript
-import { addDecorator } from "@storybook/react";
-import { withThemesProvider } from "storybook-addon-styled-component-theme";
-
-const themes = [theme1, theme2];
-addDecorator(withThemesProvider(themes));
-```
-
-### Legacy configuration v.5.2 and v.4
+## storybook v5 and v4
 
 #### Add to .storybook/addons.js
 
@@ -46,7 +53,7 @@ import "storybook-addon-styled-component-theme/dist/register";
 import "storybook-addon-styled-component-theme/dist/src/register";
 ```
 
-#### addDecorator to .storybook/config.js
+#### addDecorator to .storybook/preview.js
 
 ```javascript
 import { addDecorator } from "@storybook/react";
@@ -54,20 +61,6 @@ import { withThemesProvider } from "storybook-addon-styled-component-theme";
 
 const themes = [theme1, theme2];
 addDecorator(withThemesProvider(themes));
-```
-
-> or
-
-#### addDecorator to stories
-
-```javascript
-import { withThemesProvider } from "storybook-addon-styled-component-theme";
-
-const themes = [theme1, theme2];
-
-storiesOf("demo", module)
-  .addDecorator(withThemesProvider(themes))
-  .add("demo div", () => <div>DEMO</div>);
 ```
 
 #### Remind
