@@ -76,6 +76,7 @@ export const Themes: React.FunctionComponent<ThemeProps> = compose<BaseComponent
 
 const FlexRow = styled.div`
     display: flex;
+    flex-wrap: wrap;
     padding: 10px;
     box-sizing: border-box;
 `;
