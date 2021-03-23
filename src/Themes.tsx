@@ -78,6 +78,10 @@ const FlexRow = styled.div`
     display: flex;
     padding: 10px;
     box-sizing: border-box;
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
 `;
 
 const FillingDiv = styled.div`
@@ -107,4 +111,9 @@ const Button = styled.div`
     font-weight: ${(props: ButtonProps) => props.selected ? "bold" : "normal"};
     background-color: ${(props: ButtonProps) => props.selected ? "#333" : "None"};
     white-space: nowrap;
+
+    @media (max-width: 600px) {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
 `;
