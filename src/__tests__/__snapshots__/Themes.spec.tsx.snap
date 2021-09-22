@@ -2,13 +2,13 @@
 
 exports[`Themes spec should render proper 1`] = `
 <div
-  class="sc-bdfBwQ cccArU"
+  className="sc-bdfBQB jJpUNk"
 >
   <div
-    class="sc-gsTCUz hwEMSL"
+    className="sc-gsTEea jDsbOj"
   />
   <div
-    class="sc-dlfnbm jrWvId"
+    className="sc-dlfnuX hNixLK"
   >
     |
   </div>

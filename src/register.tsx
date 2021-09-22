@@ -17,7 +17,6 @@ export default makeDecorator({
     name: "withThemesProvider",
     parameterName: "theme",
     wrapper: (getStory, context) => {
-        console.log("hello");
         return getStory(context);
     },
 });
