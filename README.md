@@ -26,7 +26,7 @@ import { withThemesProvider } from "storybook-addon-styled-component-theme";
 import { ThemeProvider } from "styled-components";
 
 const themes = [theme1, theme2];
-addDecorator(withThemesProvider(themes), ThemeProvider);
+addDecorator(withThemesProvider(themes, ThemeProvider));
 ```
 
 #### Add to .storybook/main.js
