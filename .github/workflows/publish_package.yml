@@ -27,9 +27,6 @@ jobs:
       - name: Install
         run: yarn
 
-      - name: Link
-        run: yarn lint
-
       - name: Build
         run: yarn build
 
