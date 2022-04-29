@@ -11,10 +11,10 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
+    "build": "yarn build:clean && yarn build:lib",
     "build:watch": "npm run clean && tsc -p . -w",
     "pretest": "tslint -p .",
     "test": "rimraf dist && jest",
-    "build": "yarn build:clean && yarn build:lib",
     "build:clean": "rimraf dist",
     "prepare": "npm run build",
     "coverage": "jest --coverage",

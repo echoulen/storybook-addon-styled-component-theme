@@ -7,7 +7,7 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import replace from "rollup-plugin-replace";
 import url from "rollup-plugin-url";
 import { terser } from "rollup-plugin-terser";
-import copy from "rollup-plugin-copy";
+import immutable from "immutable";
 
 export default {
   input: "src/index.ts",
@@ -29,8 +29,7 @@ export default {
   external: [
     "react",
     "react-dom",
-    "classnames",
-    "styled-components",
+    "react-jss",
     "react-modal",
     "react-file-drop",
     "@types/react",
@@ -51,15 +50,13 @@ export default {
       include: "./node_modules/**",
       namedExports: {
         react: Object.keys(react),
-        "react-dom": Object.keys(reactDom)
+        "react-dom": Object.keys(reactDom),
+        immutable: Object.keys(immutable)
       }
     }),
     replace({
       "process.env.NODE_ENV": JSON.stringify("development")
     }),
     terser(),
-    copy({
-      targets: [{ src: "./src/scss/uvpVariables.scss", dest: "dist/scss/" }]
-    })
   ]
 };
