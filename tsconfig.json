@@ -1,32 +1,29 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
-    "module": "es2015",
     "target": "es5",
-    "lib": ["es5", "es6", "es7", "es2017", "dom"],
+    "module": "commonjs",
     "sourceMap": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "baseUrl": "src",
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "declaration": true,
-    "declarationDir": "./dist/types",
-    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "skipLibCheck": true,
+    "declaration": true,
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ],
+    "jsx": "react",
+    "types": [
+      "node",
+      "jest"
+    ],
+    "sourceRoot": "src",
+    "declarationDir": "dist",
+    "outDir": "dist"
   },
-  "include": ["src", "./typeScript"],
   "exclude": [
     "node_modules",
-    "**/__storybook__/**",
-    "**/__snapshots__/**",
-    "**/__tests__/**"
+    "example"
   ]
 }

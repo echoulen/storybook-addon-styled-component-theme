@@ -2,6 +2,7 @@
   "name": "@mmit-erp/storybook-addon-jss-component-theme",
   "description": "mmit-erp storybook-addon-jss-component-theme",
   "homepage": "https://mmit-erp.github.io/storybook-addon-jss-component-theme/",
+  "version": "2.1.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,

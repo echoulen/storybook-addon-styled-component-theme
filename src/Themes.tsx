@@ -1,4 +1,4 @@
-import React, {FunctionComponent, ReactNode} from "react";
+import * as React from "react";
 import {List} from "immutable";
 import {branch, compose, lifecycle, renderNothing, withHandlers, withState} from "recompose";
 import {Theme} from "./types/Theme";
@@ -24,7 +24,7 @@ interface ThemeHandler {
 
 type BaseComponentProps = ThemeProps & ThemeState & ThemeHandler;
 
-const BaseComponent: FunctionComponent<BaseComponentProps> = ({onSelectTheme, themes, theme}) => (
+const BaseComponent: React.FunctionComponent<BaseComponentProps> = ({onSelectTheme, themes, theme}) => (
     <div style={{display: "flex", padding: "10px", boxSizing: "border-box"}}>
         {themes.map((th, i) => (
             <Button
@@ -78,7 +78,7 @@ export const Themes: React.FunctionComponent<ThemeProps> = compose<BaseComponent
 
 interface ButtonProps {
     id: string;
-    children?: ReactNode;
+    children?: React.ReactNode;
     selected: boolean;
     onClick: () => void;
 }
