@@ -2,16 +2,16 @@
   "name": "@mmit-erp/storybook-addon-jss-component-theme",
   "description": "mmit-erp storybook-addon-jss-component-theme",
   "homepage": "https://mmit-erp.github.io/storybook-addon-jss-component-theme/",
-  "main": "./dist/cjs/src/index.js",
-  "module": "./dist/es/src/index.js",
-  "types": "./dist/types/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "files": [
     "dist"
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "build": "yarn build:clean && yarn build:lib",
+    "build": "npm run clean && tsc -p .",
+    "rollupBuild": "yarn build:clean && yarn build:lib",
     "build:watch": "npm run clean && tsc -p . -w",
     "pretest": "tslint -p .",
     "test": "rimraf dist && jest",
