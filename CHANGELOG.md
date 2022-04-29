@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/mmit-erp/storybook-addon-jss-component-theme/compare/v2.1.0...v2.1.1) (2022-04-29)
+
+
+### Bug Fixes
+
+* fix readme ([22b9231](https://github.com/mmit-erp/storybook-addon-jss-component-theme/commit/22b9231349e5af40ce39c32ad57c553caa85905b))
+
 # [2.1.0](https://github.com/mmit-erp/storybook-addon-jss-component-theme/compare/v2.0.0...v2.1.0) (2022-04-29)
 
 
