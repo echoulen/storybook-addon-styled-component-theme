@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/mmit-erp/storybook-addon-jss-component-theme/compare/v2.0.0...v2.1.0) (2022-04-29)
+
+
+### Features
+
+* addon works with jss, storybook => 6.0.0, react 18 ([ae0d27c](https://github.com/mmit-erp/storybook-addon-jss-component-theme/commit/ae0d27c01c4f00a7d4999760a7761c5744f79988))
+* delete lint test ([ae35cb4](https://github.com/mmit-erp/storybook-addon-jss-component-theme/commit/ae35cb4cd6e912169652fe23a7eeb6407904c757))
+* delete tests ([1b45847](https://github.com/mmit-erp/storybook-addon-jss-component-theme/commit/1b45847f5a95357d1bb37f0c7186e087121dc4fa))
+* fix repository name ([c2b8ed7](https://github.com/mmit-erp/storybook-addon-jss-component-theme/commit/c2b8ed788c930eaa1c3be0659069704e66048ed1))
+* fix rollup.config ([2cbfb61](https://github.com/mmit-erp/storybook-addon-jss-component-theme/commit/2cbfb61113d34c1fe9673baed9d77d9c3b065291))
+* fix tsconfig ([33e43da](https://github.com/mmit-erp/storybook-addon-jss-component-theme/commit/33e43da74860dace9a80128a2a095fca40329bb0))
+
 # Change Log
 
 ## [v1.2.0](https://github.com/echoulen/storybook-addon-styled-component-theme/tree/v1.2.0) (2019-04-07)
