@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/mmit-erp/storybook-addon-jss-component-theme/compare/v2.1.1...v2.1.2) (2022-04-29)
+
+
+### Bug Fixes
+
+* use build without rollup ([576130c](https://github.com/mmit-erp/storybook-addon-jss-component-theme/commit/576130cd4ad29e9e220cf6035215b76cc420b20c))
+
 ## [2.1.1](https://github.com/mmit-erp/storybook-addon-jss-component-theme/compare/v2.1.0...v2.1.1) (2022-04-29)
 
 
