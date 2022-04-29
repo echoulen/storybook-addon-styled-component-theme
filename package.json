@@ -28,7 +28,7 @@
   },
   "author": "nikolay",
   "license": "MIT",
-  "repository": "mmit-erp/storybook-addon-jss-theme",
+  "repository": "mmit-erp/storybook-addon-jss-component-theme",
   "dependencies": {
     "immutable": "^3.8.2",
     "recompose": "^0.27.1",
