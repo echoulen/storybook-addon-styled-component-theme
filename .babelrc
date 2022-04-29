@@ -1,0 +1,17 @@
+{
+  "presets": ["@babel/typescript", "@babel/preset-react", "@babel/preset-env"],
+  "plugins": [
+    "babel-plugin-styled-components",
+    "@babel/plugin-proposal-optional-chaining",
+    "babel-plugin-transform-class-properties",
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "src": "./src",
+          "config": "./config"
+        }
+      }
+    ]
+  ]
+}

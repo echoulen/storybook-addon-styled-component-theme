@@ -2,15 +2,17 @@
 
 exports[`Themes spec should render proper 1`] = `
 <div
-  class="sc-bdfBwQ cccArU"
+  style="display: flex; padding: 10px; box-sizing: border-box;"
 >
   <div
-    class="sc-gsTCUz hwEMSL"
+    style="flex: 1;"
   />
   <div
-    class="sc-dlfnbm jrWvId"
-  >
-    |
-  </div>
+    style="font-size: 0px;"
+  />
+  |
+  <div
+    style="font-size: 0px;"
+  />
 </div>
 `;

@@ -2,12 +2,11 @@ import addons from "@storybook/addons";
 import {List} from "immutable";
 import * as React from "react";
 import {branch, compose, lifecycle, renderNothing, withHandlers, withState} from "recompose";
-import {ThemeProviderComponent} from "styled-components";
 import {Theme} from "./types/Theme";
 
 export interface ThemesProviderProps {
     themes: List<Theme>;
-    ThemeProvider: ThemeProviderComponent<any>;
+    ThemeProvider: any;
 }
 
 interface ThemesProviderState {

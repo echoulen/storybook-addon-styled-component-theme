@@ -14,9 +14,9 @@
     "@storybook/preset-create-react-app": "^1.5.2",
     "@storybook/react": "^6.1.21",
     "babel-loader": "^8.0.6",
-    "storybook-addon-styled-component-theme": "link:../",
+    "storybook-addon-jss-component-theme": "link:../",
     "react-scripts": "^3.4.0",
-    "styled-components": "^5.2.1",
+    "react-jss": "^10.9.1-alpha.2",
     "typescript": "^3.9.2"
   }
 }

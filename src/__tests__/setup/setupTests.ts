@@ -1,7 +1,7 @@
 import "jest";
 
 import {configure} from "enzyme";
-import * as Adapter from "enzyme-adapter-react-16";
+import Adapter from "enzyme-adapter-react-16";
 
 declare const global: any;
 

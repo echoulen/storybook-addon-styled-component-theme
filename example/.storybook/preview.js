@@ -1,20 +1,9 @@
 import { addDecorator } from "@storybook/react";
-import { withThemesProvider } from "storybook-addon-styled-component-theme";
-import {ThemeProvider} from "styled-components";
+import { withThemesProvider } from "storybook-addon-jss-component-theme";
+import {ThemeProvider} from "react-jss";
+import {defaultTheme, darkTheme} from "../src/Demo";
 
-const defaultTheme = {
-  name: "DEFAULT",
-  backgroundColor: "white",
-  textColor: "dimgrey",
-  borderRadius: "30px"
-};
 
-const darkTheme = {
-  name: "DARK",
-  backgroundColor: "black",
-  textColor: "seashell",
-  borderRadius: "100px"
-};
 
 export const getAllThemes = () => {
   return [defaultTheme, darkTheme];

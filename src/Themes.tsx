@@ -1,8 +1,8 @@
+import React, {FunctionComponent, ReactNode} from "react";
 import {List} from "immutable";
-import * as React from "react";
 import {branch, compose, lifecycle, renderNothing, withHandlers, withState} from "recompose";
-import styled from "styled-components";
 import {Theme} from "./types/Theme";
+import {createUseStyles} from "react-jss";
 
 export interface ThemeProps {
     channel: any;
@@ -24,20 +24,22 @@ interface ThemeHandler {
 
 type BaseComponentProps = ThemeProps & ThemeState & ThemeHandler;
 
-const BaseComponent: React.FunctionComponent<BaseComponentProps> = ({onSelectTheme, themes, theme}) => (
-    <FlexRow>
+const BaseComponent: FunctionComponent<BaseComponentProps> = ({onSelectTheme, themes, theme}) => (
+    <div style={{display: "flex", padding: "10px", boxSizing: "border-box"}}>
         {themes.map((th, i) => (
             <Button
-                id={`theme-selection-button-${th.name}`}
+                id={`theme-selection-button-fi-${th.name}`}
                 selected={th === theme}
                 key={i}
                 onClick={() => onSelectTheme(th)}>
                 {th.name}
             </Button>
         )).toArray()}
-        <FillingDiv />
-        <Border>|</Border>
-    </FlexRow>
+        <div style={{flex: "1"}}/>
+        <div style={{fontSize: "0"}}/>
+        |
+        <div style={{fontSize: "0"}}/>
+    </div>
 );
 
 export const Themes: React.FunctionComponent<ThemeProps> = compose<BaseComponentProps, ThemeProps>(
@@ -74,37 +76,37 @@ export const Themes: React.FunctionComponent<ThemeProps> = compose<BaseComponent
     ),
 )(BaseComponent) as any;
 
-const FlexRow = styled.div`
-    display: flex;
-    padding: 10px;
-    box-sizing: border-box;
-`;
-
-const FillingDiv = styled.div`
-    flex: 1;
-`;
-
-// fix the selection not disappear at first time
-const Border = styled.div`
-    font-size: 0;
-`;
-
 interface ButtonProps {
+    id: string;
+    children?: ReactNode;
     selected: boolean;
+    onClick: () => void;
 }
 
-const Button = styled.div`
-    border: 1px solid #BBB;
-    border-radius: 6px;
-    color: ${(props: ButtonProps) => props.selected ? "white" : "#BBB"};
-    padding: 13px;
-    margin-right: 15px;
-    height: 55px;
-    cursor: pointer;
-    font-family: -apple-system, .SFNSText-Regular, San Francisco, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
-                Droid Sans, Helvetica Neue, Lucida Grande, Arial, sans-serif;
-    line-height: 25px;
-    font-weight: ${(props: ButtonProps) => props.selected ? "bold" : "normal"};
-    background-color: ${(props: ButtonProps) => props.selected ? "#333" : "None"};
-    white-space: nowrap;
-`;
+const useStyles = createUseStyles<any, ButtonProps>({
+    button: ({...props}) => ({
+        border: "1px solid #BBB",
+        borderRadius: "6px",
+        color: props.selected ? "#FFF" : "#3d3d3d",
+        padding: "13px",
+        marginRight: "15px",
+        height: "55px",
+        cursor: "pointer",
+        fontFamily: "-apple-system, .SFNSText-Regular, San Francisco, Roboto, Oxygen, Ubuntu, Arial, sans-serif",
+        lineHeight: "25px",
+        fontWeight: props.selected ? "bold" : "normal",
+        backgroundColor: props.selected ? "#333" : "#FFF",
+        whiteSpace: "nowrap",
+    }),
+});
+
+const Button = ({children, ...props}: ButtonProps): React.ReactElement => {
+
+    const classes = useStyles({...props});
+
+    return (
+        <div className={classes.button} id={props.id} onClick={props.onClick}>
+            {children}
+        </div>
+    );
+};

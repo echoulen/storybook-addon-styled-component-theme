@@ -1,16 +1,48 @@
 import React from "react";
-import styled from "styled-components";
+import {createUseStyles, useTheme} from "react-jss";
 
-const Content = styled.div`
-  width: 200px;
-  line-height: 200px;
-  text-align: center;
-  background-color: ${(props) => props.theme.backgroundColor};
-  color: ${(props) => props.theme.textColor};
-  border: 1px solid dimgrey;
-  border-radius: ${(props) => props.theme.borderRadius};
-`;
+export const defaultTheme = {
+    name: "DEFAULT",
+    backgroundColor: "white",
+    textColor: "dimgrey",
+    borderRadius: "30px",
+};
+
+export const darkTheme = {
+    name: "DARK",
+    backgroundColor: "black",
+    textColor: "seashell",
+    borderRadius: "100px",
+};
+
+type ThemeType = keyof typeof defaultTheme;
+
+const useStyles = createUseStyles<string, any, ThemeType>({
+
+    content: ({theme}) => ({
+        width: "200px",
+        lineHeight: "200px",
+        textAlign: "center",
+        backgroundColor: theme.backgroundColor,
+        color: theme.textColor,
+        border: "1px solid dimgrey",
+        borderRadius: theme.borderRadius,
+    }),
+});
+
+// @ts-ignore
+const Content = ({children}): React.ReactElement => {
+
+    const theme = useTheme<ThemeType>();
+    const classes = useStyles({theme});
+
+    return (
+        <div className={classes.content}>
+            {children}
+        </div>
+    );
+};
 
 export const Demo = () => (
-  <Content>Demo</Content>
+    <Content>Demo</Content>
 );
