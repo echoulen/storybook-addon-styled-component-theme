@@ -1,15 +1,10 @@
-[![npm version](https://badge.fury.io/js/storybook-addon-jss-theme.svg)](https://badge.fury.io/js/storybook-addon-jss-theme)
-[![build status](https://travis-ci.org/echoulen/storybook-addon-jss-theme.svg?branch=master)](https://travis-ci.org/echoulen/storybook-addon-jss-theme)
-[![codecov](https://codecov.io/gh/echoulen/storybook-addon-jss-theme/branch/master/graph/badge.svg)](https://codecov.io/gh/echoulen/storybook-addon-jss-theme)
-
-
 This addon allows storybook to showcase components with multiple different jss themes.
 Supports storybook v4, v5, v6 and newer
 
 ## Installation
 
 ```bash
-yarn add storybook-addon-jss-theme --dev
+yarn add @mmit-erp/storybook-addon-jss-component-theme --dev
 ```
 
 # Configuration
@@ -21,8 +16,8 @@ yarn add storybook-addon-jss-theme --dev
 ```javascript
 
 import { addDecorator } from "@storybook/react";
-import { withThemesProvider } from "storybook-addon-jss-theme";
-import { ThemeProvider } from "jss";
+import { withThemesProvider } from "storybook-addon-jss-component-theme";
+import { ThemeProvider } from "react-jss";
 
 const themes = [theme1, theme2];
 addDecorator(withThemesProvider(themes, ThemeProvider));
@@ -35,7 +30,7 @@ module.exports = {
   ...
   addons: [
     ...
-    "storybook-addon-jss-theme/dist/preset"
+    "storybook-addon-jss-component-theme/dist/preset"
   ]
 };
 ```
@@ -46,17 +41,17 @@ module.exports = {
 
 ```javascript
 // v1.3, storybook v5.2
-import "storybook-addon-jss-theme/dist/register";
+import "storybook-addon-jss-component-theme/dist/register";
 
 // v1.2, storybook v4, v5.0
-import "storybook-addon-jss-theme/dist/src/register";
+import "storybook-addon-jss-component-theme/dist/src/register";
 ```
 
 #### addDecorator to .storybook/preview.js
 
 ```javascript
 import { addDecorator } from "@storybook/react";
-import { withThemesProvider } from "storybook-addon-jss-theme";
+import { withThemesProvider } from "storybook-addon-jss-component-theme";
 
 const themes = [theme1, theme2];
 addDecorator(withThemesProvider(themes));
@@ -84,10 +79,4 @@ cd example
 yarn
 
 yarn storybook
-```
-
-#### Run all the spec
-
-```shell
-yarn test
 ```
