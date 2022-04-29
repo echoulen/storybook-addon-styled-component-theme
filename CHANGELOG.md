@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/mmit-erp/storybook-addon-jss-component-theme/compare/v2.1.2...v2.2.0) (2022-04-29)
+
+
+### Features
+
+* add dependabot, compiler options fix ([e0a1610](https://github.com/mmit-erp/storybook-addon-jss-component-theme/commit/e0a161077d45bf0a3f4e69fd8da3ea1cc92569d4))
+
 ## [2.1.2](https://github.com/mmit-erp/storybook-addon-jss-component-theme/compare/v2.1.1...v2.1.2) (2022-04-29)
 
 
