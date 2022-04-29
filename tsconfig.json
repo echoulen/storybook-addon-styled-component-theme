@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
+    "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost", "ES2016.Array.Include"],
     "module": "commonjs",
     "sourceMap": true,
     "noImplicitAny": false,
@@ -8,11 +9,6 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "declaration": true,
-    "lib": [
-      "es5",
-      "es6",
-      "dom"
-    ],
     "jsx": "react",
     "types": [
       "node",

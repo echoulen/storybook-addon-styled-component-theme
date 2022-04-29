@@ -6,5 +6,6 @@ import {Theme} from "./types/Theme";
 
 export const withThemesProvider = (themes: Theme[], ThemeProvider: any = DefaultThemesProvider) =>
     (story: any): JSX.Element => {
+        // @ts-ignore
         return <ThemesProvider themes={List(themes)} ThemeProvider={ThemeProvider}>{story()}</ThemesProvider>;
     };

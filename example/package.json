@@ -9,14 +9,25 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.7.5",
-    "@storybook/addons": "^6.1.21",
-    "@storybook/preset-create-react-app": "^1.5.2",
-    "@storybook/react": "^6.1.21",
-    "babel-loader": "^8.0.6",
-    "storybook-addon-jss-component-theme": "link:../",
-    "react-scripts": "^3.4.0",
+    "@babel/core": "^7.17.9",
+    "@storybook/addons": "^6.4.22",
+    "@storybook/preset-create-react-app": "^4.1.0",
+    "@storybook/react": "^6.4.22",
+    "babel-loader": "^8.2.5",
     "react-jss": "^10.9.1-alpha.2",
-    "typescript": "^3.9.2"
-  }
+    "react-scripts": "^5.0.1",
+    "storybook-addon-jss-component-theme": "link:../",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "@storybook/builder-webpack5": "^6.4.22",
+    "@storybook/manager-webpack5": "^6.4.22",
+    "webpack": "^5.72.0"
+  },
+  "browserslist": [
+    "chrome 79",
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
 }

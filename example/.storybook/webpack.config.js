@@ -1,15 +1,20 @@
-module.exports = ({ config }) => {
-  config.module.rules.push({
-    test: /\.tsx?$/,
-    use: [
+const path = require('path');
+
+const config = {
+  module: {
+    rules: [
       {
-        loader: require.resolve("babel-loader"),
+        test: /\.tsx?$/,
+        loader: "babel-loader",
         options: {
-          presets: [require.resolve("babel-preset-react-app")]
+          presets: ["babel-preset-react-app"]
         }
-      },
+      }
     ]
-  });
-  config.resolve.extensions.push(".ts", ".tsx");
-  return config;
-};
+  },
+  resolve: {
+    extensions: [".ts", ".tsx"]
+  }
+}
+
+module.exports = config

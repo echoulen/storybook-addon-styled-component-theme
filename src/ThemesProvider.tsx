@@ -20,6 +20,7 @@ interface ThemesProviderHandler {
 
 type BaseComponentProps = ThemesProviderProps & ThemesProviderState & ThemesProviderHandler;
 
+// @ts-ignore
 const BaseComponent: React.FunctionComponent<BaseComponentProps> = ({theme, ThemeProvider, children}) => {
     return (
         <ThemeProvider theme={theme}>{children}</ThemeProvider>
